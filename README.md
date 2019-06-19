@@ -24,6 +24,14 @@ docker run --rm --name frps –net=host -v /path/to/frps.ini:/etc/frps.ini benzb
 
 [full frps.ini readme](https://github.com/fatedier/frp/blob/master/README.md)
 
+### Run frp client
+
+Just run this command to use frpc:
+
+```shell
+docker run --rm --name frpc –net=host -v /path/to/frpc.ini:/etc/frpc.ini benzbrake/frpc
+```
+
 ## 中文使用说明
 
 ### 运行FRP服务器
@@ -46,13 +54,29 @@ docker run --rm --name frps –net=host -e FRP_BIND_PORT="7000" benzbrake/frps
 docker run --rm --name frps –net=host -v /path/to/frps.ini:/etc/frps.ini benzbrake/frps
 ```
 
-### 群晖使用
+### 运行FRP客户端
+
+自定义配置文件:
+
+```shell
+docker run --rm --name frpc –net=host -v /path/to/frpc.ini:/etc/frpc.ini benzbrake/frpc
+```
+
+## 群晖使用
+
+### FRP服务器
 
 搜索注册表benzbrke/frps，Tags 选择你要安装的版本下载
 
 高级设置-卷-添加文件 本地文件自选（本地frps.ini），装载路径 /etc/frps.ini （装载路径不能修改）
 
 [frps.ini 详细说明](https://github.com/fatedier/frp/blob/master/README.md)
+
+### FRP客户端
+
+搜索注册表benzbrke/frpc，Tags 选择你要安装的版本下载
+
+高级设置-卷-添加文件 本地文件自选（本地frpc.ini），装载路径 /etc/frpc.ini （装载路径不能修改）
 
 ## License
 
