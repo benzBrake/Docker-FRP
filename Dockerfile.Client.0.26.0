@@ -11,4 +11,4 @@ RUN set -ex && \
 
 VOLUME /etc/frpc.ini
 CMD ["-c", "/etc/frpc.ini"]
-ENTRYPOINT ["/usr/bin/frps"]
+ENTRYPOINT ["/usr/bin/frpc"]
