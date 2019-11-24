@@ -1,0 +1,117 @@
+language: bash
+env:
+  global:
+    - MAINTAINER="Ryan Lieu<github-benzBrake@woai.ru>"
+  matrix:
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.29.1
+      BUILD_DIRECTORY=server
+      TAG_LATEST=true
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.29.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.28.2
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.28.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.28.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.27.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.27.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.26.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.25.3
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.25.2
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.25.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.25.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.24.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.24.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.23.3
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.23.2
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.23.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.23.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.22.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.21.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.20.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.19.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.19.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.18.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.17.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.16.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.16.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.15.1
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.15.0
+      BUILD_DIRECTORY=server
+    - DOCKER_REPO=benzbrake/frps
+      DOCKER_TAG=v0.14.1
+      BUILD_DIRECTORY=server
+
+sudo: required
+  
+services:
+  - docker
+
+before_script:
+  - chmod +x ./hooks/*.sh
+
+script:
+  - if [[ -z  ]]; then exit 1; fi
+  - if [[ -z  ]]; then exit 1; fi
+  - if [[ -z  ]]; then export DOCKER_REPO="/"; fi
+  - if [[ -f /build.sh ]]; then bash /build.sh; else ./hooks/build.sh; fi
+
+after_success:
+  - ./hooks/list.sh
+  - if [[ "" = "master" ]]; then ./hooks/upload.sh ; fi
+
+notifications:
+  email: false
