@@ -107,7 +107,7 @@ script:
   - if [[ -z ${DOCKER_USERNAME} ]]; then exit 1; fi
   - if [[ -z ${BUILD_DIRECTORY} ]]; then exit 1; fi
   - if [[ -z ${DOCKER_REPO} ]]; then export DOCKER_REPO="${DOCKER_USERNAME}/${BUILD_DIRECTORY}"; fi
-  - if [[ -f ${BUILD_DIRECTORY}/build.sh ]]; then bash ${BUILD_DIRECTORY}/build.sh; else ./hooks/build.sh; fi
+  - ./hooks/build.sh
 
 after_success:
   - ./hooks/list.sh
