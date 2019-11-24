@@ -33,14 +33,14 @@ before_script:
   - chmod +x ./hooks/*.sh
 
 script:
-  - if [[ -z ${DOCKER_USERNAME} ]]; then exit 1; fi
-  - if [[ -z ${BUILD_DIRECTORY} ]]; then exit 1; fi
-  - if [[ -z ${DOCKER_REPO} ]]; then export DOCKER_REPO="${DOCKER_USERNAME}/${BUILD_DIRECTORY}"; fi
-  - if [[ -f ${BUILD_DIRECTORY}/build.sh ]]; then bash ${BUILD_DIRECTORY}/build.sh; else ./hooks/build.sh; fi
+  - if [[ -z \${DOCKER_USERNAME} ]]; then exit 1; fi
+  - if [[ -z \${BUILD_DIRECTORY} ]]; then exit 1; fi
+  - if [[ -z \${DOCKER_REPO} ]]; then export DOCKER_REPO="\${DOCKER_USERNAME}/\${BUILD_DIRECTORY}"; fi
+  - if [[ -f \${BUILD_DIRECTORY}/build.sh ]]; then bash \${BUILD_DIRECTORY}/build.sh; else ./hooks/build.sh; fi
 
 after_success:
   - ./hooks/list.sh
-  - if [[ "$TRAVIS_BRANCH" = "master" ]]; then ./hooks/upload.sh ; fi
+  - if [[ "\$TRAVIS_BRANCH" = "master" ]]; then ./hooks/upload.sh ; fi
 
 notifications:
   email: false
