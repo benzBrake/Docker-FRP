@@ -21,6 +21,12 @@ for tag in ${TAGS}; do
     if [[ ${tag} = ${TAG_LATEST} ]]; then
         echo "      TAG_LATEST=true" >> .travis.yml.middle
     fi
+    echo "    - DOCKER_REPO=benzbrake/frpc" >> .travis.yml.middle
+    echo "      DOCKER_TAG=${tag}" >> .travis.yml.middle
+    echo "      BUILD_DIRECTORY=client" >> .travis.yml.middle
+    if [[ ${tag} = ${TAG_LATEST} ]]; then
+        echo "      TAG_LATEST=true" >> .travis.yml.middle
+    fi
 done
 cat >.travis.yml.end<<EOF
 
