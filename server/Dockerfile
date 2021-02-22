@@ -11,6 +11,7 @@ FROM scratch
 MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
 ENV FRP_BIND_PORT=7000
 COPY --from=build /go/src/github.com/fatedier/frp/bin/frps /usr/bin/frps
+RUN mkdir -p /etc/frp
 ADD ["frps.ini","/etc/frp/"]
 CMD ["-c", "/etc/frp/frps.ini"]
 ENTRYPOINT ["/usr/bin/frps"]

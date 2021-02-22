@@ -11,4 +11,5 @@ FROM scratch
 MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
 ENV FRP_BIND_PORT=7000
 COPY --from=build /go/src/github.com/fatedier/frp/bin/frpc /usr/bin/frpc
+RUN mkdir -p /etc/frp
 ENTRYPOINT ["/usr/bin/frpc"]
