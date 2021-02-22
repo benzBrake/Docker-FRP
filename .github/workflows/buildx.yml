@@ -27,7 +27,7 @@ jobs:
         id: prepare
         run: |
           echo "OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-          echo DOCKER_PLATFORMS=linux/amd64,linux/386,linux/arm/v6,linux/arm/v7,linux/arm64,linux/arm64/v8,linux/mips64,linux/mips64le,linux/mipsle,linux/mips >> $GITHUB_ENV
+          echo DOCKER_PLATFORMS=linux/amd64,linux/386,linux/arm/v6,linux/arm/v7,linux/arm64,linux/arm64/v8 >> $GITHUB_ENV
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
