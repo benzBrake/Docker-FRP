@@ -1,5 +1,5 @@
 #!/bin/sh
-mkdir -pv /go/src/github.com/fatedier/frp/bin/
+mkdir -pv /go/src/github.com/fatedier
 go get github.com/tools/godep
 cd /go/src/github.com/fatedier
 git clone https://github.com/fatedier/frp frp
