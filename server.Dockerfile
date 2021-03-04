@@ -10,8 +10,8 @@ ENTRYPOINT ["bash"]
 FROM scratch
 LABEL maintainer="Ryan Lieu github-benzBrake@woai.ru"
 ENV FRP_BIND_PORT=7000
+EXPOSE 7000
 COPY --from=build /frps /usr/bin/frps
-RUN mkdir -p /etc/frp
-ADD ["frps.ini","/etc/frp/"]
-CMD ["-c", "/etc/frp/frps.ini"]
+COPY --from=build /frps.ini /frps.ini
+CMD ["-c", "/frps.ini"]
 ENTRYPOINT ["/usr/bin/frps"]

@@ -11,5 +11,4 @@ FROM scratch
 LABEL maintainer="Ryan Lieu github-benzBrake@woai.ru"
 ENV FRP_BIND_PORT=7000
 COPY --from=build /frpc /usr/bin/frpc
-RUN mkdir -p /etc/frp
 ENTRYPOINT ["/usr/bin/frpc"]
