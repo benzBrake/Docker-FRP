@@ -1,4 +1,6 @@
 #!/bin/sh
+apt-get update
+apt-get -y install curl
 cd /
 architecture=""
 case "$(uname -m)" in

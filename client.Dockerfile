@@ -1,4 +1,4 @@
-FROM docker.io/library/golang as build
+FROM debian as build
 ARG BUILD_VERSION
 ADD build.sh /build.sh
 RUN mkdir -pv /go/src/github.com/fatedier
