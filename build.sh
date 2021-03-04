@@ -1,6 +1,6 @@
 #!/bin/sh
 apt-get update
-apt-get -y install curl
+apt-get -y install curl ca-certificates
 cd /
 architecture=""
 case "$(uname -m)" in
