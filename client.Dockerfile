@@ -1,4 +1,4 @@
-FROM debian as build
+FROM benzbrake/alpine as build
 ARG BUILD_VERSION
 ADD build.sh /build.sh
 RUN mkdir -pv /go/src/github.com/fatedier
