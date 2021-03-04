@@ -8,8 +8,10 @@ RUN set -x \
 ENTRYPOINT ["bash"]
 
 FROM scratch
-MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
+LABEL maintainer="Ryan Lieu github-benzBrake@woai.ru"
 ENV FRP_BIND_PORT=7000
-COPY --from=build /go/src/github.com/fatedier/frp/bin/frpc /usr/bin/frpc
+COPY --from=build /frps /usr/bin/frps
 RUN mkdir -p /etc/frp
-ENTRYPOINT ["/usr/bin/frpc"]
+ADD ["frps.ini","/etc/frp/"]
+CMD ["-c", "/etc/frp/frps.ini"]
+ENTRYPOINT ["/usr/bin/frps"]
