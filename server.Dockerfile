@@ -8,7 +8,7 @@ RUN set -x \
 ENTRYPOINT ["bash"]
 
 FROM scratch
-LABEL maintainer="Ryan Lieu github-benzBrake@woai.ru"
+LABEL maintainer="Lieu Ryan github-benzBrake@woai.ru"
 ENV FRP_BIND_PORT=7000
 EXPOSE 7000
 COPY --from=build /frps /usr/bin/frps
